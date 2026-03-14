@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
+
+const HeroScene = lazy(() => import("./HeroScene"));
 
 interface HeroProps {
   logoText?: string;
@@ -18,6 +20,7 @@ const DEMO_LINES = [
 ];
 
 export default function Hero({
+  primaryColor = "#6366f1",
   ctaText = "Start Planning Free",
   ctaLink = "/signup",
 }: HeroProps) {
@@ -30,50 +33,12 @@ export default function Hero({
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050510]">
-      {/* ── Animated gradient background ── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-      >
-        <div className="animate-hero-gradient absolute inset-0 opacity-40"
-          style={{
-            background:
-              "linear-gradient(125deg, #1a0533 0%, #0a1628 25%, #0d0b2e 50%, #061a2e 75%, #1a0533 100%)",
-            backgroundSize: "400% 400%",
-          }}
-        />
-      </div>
-
-      {/* ── Floating blobs ── */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-        {/* Blob 1 — purple, top-left */}
-        <div
-          className="animate-blob-1 absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full opacity-25"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(139,92,246,0.55) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* Blob 2 — blue, right */}
-        <div
-          className="animate-blob-2 absolute -right-24 top-1/4 h-[480px] w-[480px] rounded-full opacity-20"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(59,130,246,0.5) 0%, transparent 70%)",
-            filter: "blur(90px)",
-          }}
-        />
-        {/* Blob 3 — indigo, bottom */}
-        <div
-          className="animate-blob-3 absolute -bottom-40 left-1/3 h-[500px] w-[500px] rounded-full opacity-20"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(99,102,241,0.45) 0%, transparent 70%)",
-            filter: "blur(100px)",
-          }}
-        />
-      </div>
+      {/* ── Three.js 3D background ── */}
+      <Suspense fallback={
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#1a0533] via-[#0a1628] to-[#050510]" />
+      }>
+        <HeroScene primaryColor={primaryColor} />
+      </Suspense>
 
       {/* ── Subtle grid overlay ── */}
       <div
