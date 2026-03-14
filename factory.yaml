@@ -41,9 +41,9 @@ pricing:
     cta: "Get Started"
     highlighted: false
   - name: "Pro"
-    price: 12
+    price: 5
     interval: "month"
-    stripe_price_id: ""  # Set after creating product in Stripe
+    stripe_price_id: "price_1TAwH9Jl8VOqMrJRMrMFFaXC"
     features:
       - "Unlimited plans"
       - "Advanced AI with GPT-4"
