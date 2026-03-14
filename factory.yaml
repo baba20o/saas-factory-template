@@ -1,0 +1,60 @@
+# SaaS Factory Configuration
+# Change these values to create a new product from the template
+
+product:
+  name: "PlanForge"
+  tagline: "Turn rough ideas into actionable project plans in seconds"
+  description: "AI-powered project planning that breaks down any idea into milestones, tasks, and timelines."
+  domain: "planforge.app"
+
+branding:
+  primary_color: "#6366f1"    # indigo-500
+  accent_color: "#f59e0b"     # amber-500
+  logo_text: "PlanForge"      # text-based logo (or path to SVG)
+
+hero:
+  headline: "From Idea to Plan in 60 Seconds"
+  subheadline: "Describe your project. Get a detailed breakdown with milestones, dependencies, and time estimates — powered by AI."
+  cta_text: "Try It Free"
+  cta_link: "/app"
+
+features:
+  - title: "Instant Breakdown"
+    description: "Paste any idea and get milestones, tasks, and dependencies in seconds."
+    icon: "zap"
+  - title: "Smart Timelines"
+    description: "AI estimates realistic timelines based on project complexity."
+    icon: "clock"
+  - title: "Export Anywhere"
+    description: "Download as PDF, Markdown, or sync to Jira, Linear, and GitHub."
+    icon: "download"
+
+pricing:
+  - name: "Free"
+    price: 0
+    interval: "month"
+    features:
+      - "3 plans per month"
+      - "Basic AI breakdown"
+      - "Markdown export"
+    cta: "Get Started"
+    highlighted: false
+  - name: "Pro"
+    price: 12
+    interval: "month"
+    features:
+      - "Unlimited plans"
+      - "Advanced AI with GPT-4"
+      - "PDF + Jira + Linear export"
+      - "Team sharing"
+      - "Priority support"
+    cta: "Start Free Trial"
+    highlighted: true
+
+footer:
+  company: "GMC Corp"
+  links:
+    - label: "Privacy"
+      href: "/privacy"
+    - label: "Terms"
+      href: "/terms"
