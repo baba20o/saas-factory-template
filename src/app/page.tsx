@@ -1,4 +1,5 @@
 import { getFactoryConfig } from "@/lib/factory";
+import CheckoutButton from "./checkout-button";
 
 const iconMap: Record<string, string> = {
   zap: "⚡",
@@ -107,21 +108,13 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={hero.cta_link}
-                  className={`block text-center rounded-full py-2.5 font-medium text-sm transition-opacity hover:opacity-90 ${
-                    tier.highlighted
-                      ? "text-white"
-                      : "border border-gray-300 text-gray-700 hover:bg-gray-50"
-                  }`}
-                  style={
-                    tier.highlighted
-                      ? { backgroundColor: branding.primary_color }
-                      : undefined
-                  }
-                >
-                  {tier.cta}
-                </a>
+                <CheckoutButton
+                  priceId={tier.stripe_price_id}
+                  label={tier.cta}
+                  highlighted={tier.highlighted}
+                  primaryColor={branding.primary_color}
+                  ctaLink={hero.cta_link}
+                />
               </div>
             ))}
           </div>

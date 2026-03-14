@@ -33,6 +33,7 @@ pricing:
   - name: "Free"
     price: 0
     interval: "month"
+    stripe_price_id: ""
     features:
       - "3 plans per month"
       - "Basic AI breakdown"
@@ -42,6 +43,7 @@ pricing:
   - name: "Pro"
     price: 12
     interval: "month"
+    stripe_price_id: ""  # Set after creating product in Stripe
     features:
       - "Unlimited plans"
       - "Advanced AI with GPT-4"

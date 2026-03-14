@@ -29,6 +29,7 @@ export interface FactoryConfig {
     name: string;
     price: number;
     interval: string;
+    stripe_price_id: string;
     features: string[];
     cta: string;
     highlighted: boolean;
