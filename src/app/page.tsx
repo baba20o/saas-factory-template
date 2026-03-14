@@ -3,6 +3,8 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
+import ProjectGraph from "@/components/ProjectGraph";
+import LiveMetrics from "@/components/LiveMetrics";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
@@ -30,6 +32,8 @@ export default function Home() {
         primaryColor={branding.primary_color}
       />
       <HowItWorks primaryColor={branding.primary_color} />
+      <ProjectGraph primaryColor={branding.primary_color} />
+      <LiveMetrics primaryColor={branding.primary_color} />
       <Testimonials primaryColor={branding.primary_color} />
       <Pricing
         pricing={pricing}
