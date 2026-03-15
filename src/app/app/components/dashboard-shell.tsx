@@ -13,7 +13,7 @@ interface NavItem {
 }
 
 interface DashboardShellProps {
-  user: { email: string; id: string };
+  user: { email: string; id: string; isAdmin?: boolean };
   plan: Plan;
   config: {
     productName: string;
@@ -32,7 +32,10 @@ const DEFAULT_NAV: NavItem[] = [
 
 export function DashboardShell({ user, plan, config, children }: DashboardShellProps) {
   const pathname = usePathname();
-  const navItems = config.navItems ?? DEFAULT_NAV;
+  const baseNav = config.navItems ?? DEFAULT_NAV;
+  const navItems = user.isAdmin
+    ? [...baseNav, { label: "Admin", icon: "shield", href: "/app/admin" }]
+    : baseNav;
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 

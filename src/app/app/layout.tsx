@@ -14,7 +14,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <DashboardShell
-      user={{ email: user.email!, id: user.id }}
+      user={{ email: user.email!, id: user.id, isAdmin: user.user_metadata?.is_admin === true }}
       plan={subscription.plan_name}
       config={{
         productName: config.product.name,
