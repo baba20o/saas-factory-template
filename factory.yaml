@@ -60,6 +60,25 @@ pricing:
     cta: "Start Free Trial"
     highlighted: true
 
+dashboard:
+  nav_items:
+    - label: "Dashboard"
+      icon: "layout-dashboard"
+      href: "/app"
+    - label: "Settings"
+      icon: "settings"
+      href: "/app/settings"
+    - label: "Billing"
+      icon: "credit-card"
+      href: "/app/billing"
+  stats:
+    - label: "Plans Created"
+      key: "plans_created"
+    - label: "Exports"
+      key: "exports"
+    - label: "Team Members"
+      key: "team_members"
+
 footer:
   company: "GMC Corp"
   links:

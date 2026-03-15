@@ -39,6 +39,17 @@ export interface FactoryConfig {
     company: string;
     links: Array<{ label: string; href: string }>;
   };
+  dashboard?: {
+    nav_items?: Array<{
+      label: string;
+      icon: string;
+      href: string;
+    }>;
+    stats?: Array<{
+      label: string;
+      key: string;
+    }>;
+  };
 }
 
 export function slugify(title: string): string {
