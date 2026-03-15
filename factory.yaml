@@ -12,6 +12,47 @@ branding:
   accent_color: "#f59e0b"     # amber-500
   logo_text: "PlanForge"      # text-based logo (or path to SVG)
 
+# Theme configuration — controls the entire visual identity
+# Set mode to "light" for a light theme. Null values auto-resolve from mode.
+theme:
+  mode: "dark"                # "dark" | "light"
+  colors:
+    primary: "#6366f1"        # Buttons, links, accents
+    accent: "#f59e0b"         # Secondary accent
+    # Null = auto-resolved from mode (dark/light defaults)
+    # background: null
+    # surface: null
+    # border: null
+    # text_primary: null
+    # text_secondary: null
+    # text_muted: null
+  radius: "xl"                # Border radius scale
+  glassmorphism: true         # Backdrop-blur glass effects on/off
+
+# Landing page section order — omit a section to exclude it
+# Each section has a type and optional variant
+landing:
+  sections:
+    - type: "nav"
+    - type: "hero"
+      variant: "3d-orbs"        # "3d-orbs" | "gradient-mesh" | "particles" | "minimal"
+    - type: "features"
+      variant: "cards"
+    - type: "how-it-works"
+      variant: "steps"
+    - type: "project-graph"
+      variant: "force-directed"
+    - type: "live-metrics"
+      variant: "sparklines"
+    - type: "testimonials"
+      variant: "carousel"
+    - type: "pricing"
+      variant: "cards"
+    - type: "faq"
+      variant: "accordion"
+    - type: "footer"
+      variant: "full"            # "full" | "simple" | "minimal"
+
 hero:
   headline: "From Idea to Plan in 60 Seconds"
   subheadline: "Describe your project. Get a detailed breakdown with milestones, dependencies, and time estimates — powered by AI."

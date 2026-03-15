@@ -47,7 +47,7 @@ export default function Nav({
       <nav
         className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
           scrolled
-            ? "border-b border-white/10 bg-[#050510]/80 shadow-lg shadow-black/20 backdrop-blur-xl"
+            ? "border-b border-glass-border bg-background/80 shadow-lg shadow-black/20 backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
@@ -69,7 +69,7 @@ export default function Nav({
                 />
               </svg>
             </div>
-            <span className="text-lg font-bold text-white">{logoText}</span>
+            <span className="text-lg font-bold text-text-primary">{logoText}</span>
           </a>
 
           {/* Center links — desktop */}
@@ -78,7 +78,7 @@ export default function Nav({
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-400 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-text-secondary transition-colors duration-200 hover:bg-white/5 hover:text-text-primary"
               >
                 {link.label}
               </a>
@@ -89,7 +89,7 @@ export default function Nav({
           <div className="hidden items-center gap-3 md:flex">
             <a
               href="/login"
-              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
+              className="rounded-lg px-4 py-2 text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary"
             >
               Log in
             </a>
@@ -118,7 +118,7 @@ export default function Nav({
           {/* Hamburger — mobile */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-white/5 hover:text-white md:hidden"
+            className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-white/5 hover:text-text-primary md:hidden"
             aria-label="Toggle menu"
           >
             <div className="flex w-5 flex-col items-center gap-[5px]">
@@ -152,13 +152,13 @@ export default function Nav({
       >
         {/* Backdrop */}
         <div
-          className="absolute inset-0 bg-[#050510]/90 backdrop-blur-xl"
+          className="absolute inset-0 bg-background/90 backdrop-blur-xl"
           onClick={() => setMobileOpen(false)}
         />
 
         {/* Panel */}
         <div
-          className={`absolute right-0 top-0 flex h-full w-full max-w-sm flex-col border-l border-white/5 bg-[#0a0a1a]/95 px-8 pt-24 pb-8 backdrop-blur-2xl transition-transform duration-500 ${
+          className={`absolute right-0 top-0 flex h-full w-full max-w-sm flex-col border-l border-glass-border bg-surface/95 px-8 pt-24 pb-8 backdrop-blur-2xl transition-transform duration-500 ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -168,19 +168,19 @@ export default function Nav({
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-4 py-3 text-lg font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
+                className="rounded-xl px-4 py-3 text-lg font-medium text-text-secondary transition-colors hover:bg-white/5 hover:text-text-primary"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="my-6 h-px bg-white/10" />
+          <div className="my-6 h-px bg-glass-border" />
 
           <a
             href="/login"
             onClick={() => setMobileOpen(false)}
-            className="rounded-xl px-4 py-3 text-lg font-medium text-slate-400 transition-colors hover:text-white"
+            className="rounded-xl px-4 py-3 text-lg font-medium text-text-secondary transition-colors hover:text-text-primary"
           >
             Log in
           </a>
@@ -207,7 +207,7 @@ export default function Nav({
           </a>
 
           {/* Bottom decoration */}
-          <div className="mt-auto text-center text-xs text-slate-600">
+          <div className="mt-auto text-center text-xs text-text-muted">
             &copy; {new Date().getFullYear()} {logoText}. All rights reserved.
           </div>
         </div>

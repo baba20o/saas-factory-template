@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   const { branding, hero, footer } = config;
 
   return (
-    <div className="min-h-screen bg-[#050510] text-gray-100">
+    <div className="min-h-screen bg-background text-text-primary">
       <Nav
         logoText={branding.logo_text}
         primaryColor={branding.primary_color}
@@ -16,16 +16,16 @@ export default function PrivacyPage() {
       />
 
       <article className="pt-32 pb-24 px-6 max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 text-center">
           Privacy Policy
         </h1>
-        <p className="text-gray-500 text-center mb-16 text-sm">
+        <p className="text-text-muted text-center mb-16 text-sm">
           Last updated: March 1, 2026
         </p>
 
-        <div className="space-y-10 text-gray-400 text-sm leading-relaxed">
+        <div className="space-y-10 text-text-secondary text-sm leading-relaxed">
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               Information We Collect
             </h2>
             <p>
@@ -39,11 +39,11 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               How We Use Your Information
             </h2>
             <p>We use the information we collect to:</p>
-            <ul className="list-disc list-inside mt-3 space-y-1 text-gray-500">
+            <ul className="list-disc list-inside mt-3 space-y-1 text-text-muted">
               <li>Provide, maintain, and improve PlanForge</li>
               <li>Generate AI-powered project plans and recommendations</li>
               <li>Send transactional emails and service updates</li>
@@ -57,7 +57,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               Data Protection
             </h2>
             <p>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Cookies</h2>
+            <h2 className="text-xl font-semibold text-text-primary mb-3">Cookies</h2>
             <p>
               PlanForge uses cookies and similar tracking technologies to
               maintain your session, remember your preferences, and understand
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               Third-Party Services
             </h2>
             <p>
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               Your Consent
             </h2>
             <p>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               Changes to This Policy
             </h2>
             <p>

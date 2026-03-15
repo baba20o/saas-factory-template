@@ -172,7 +172,7 @@ export default async function FeaturePage({
     `${feature.description} Designed to integrate seamlessly into your workflow, ${feature.title} helps teams move faster with less friction. Whether you're a solo founder or an enterprise team, this feature scales with your needs.`;
 
   return (
-    <div className="min-h-screen bg-[#050510] text-white">
+    <div className="min-h-screen bg-background text-text-primary">
       <Nav
         logoText={branding.logo_text}
         primaryColor={primaryColor}
@@ -219,7 +219,7 @@ export default async function FeaturePage({
           </h1>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
             {feature.description}
           </p>
         </div>
@@ -229,7 +229,7 @@ export default async function FeaturePage({
       <section className="relative px-6 pb-24">
         <div className="max-w-4xl mx-auto">
           <div
-            className="relative rounded-3xl border border-white/10 p-8 md:p-12"
+            className="relative rounded-3xl border border-glass-border p-8 md:p-12"
             style={{
               background: "rgba(255, 255, 255, 0.03)",
               backdropFilter: "blur(20px)",
@@ -245,13 +245,13 @@ export default async function FeaturePage({
             />
 
             {/* Overview */}
-            <p className="text-slate-300 text-lg leading-relaxed mb-12">
+            <p className="text-text-secondary text-lg leading-relaxed mb-12">
               {detailText}
             </p>
 
             {/* How it works */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-text-primary mb-8 flex items-center gap-3">
                 <span
                   className="flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold"
                   style={{ backgroundColor: `${primaryColor}20`, color: primaryColor }}
@@ -272,7 +272,7 @@ export default async function FeaturePage({
                       {i + 1}
                     </div>
                     <div className="pt-2">
-                      <p className="text-slate-300 leading-relaxed">{step}</p>
+                      <p className="text-text-secondary leading-relaxed">{step}</p>
                     </div>
                   </div>
                 ))}
@@ -281,7 +281,7 @@ export default async function FeaturePage({
 
             {/* Key benefits */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-text-primary mb-8 flex items-center gap-3">
                 <span
                   className="flex items-center justify-center w-8 h-8 rounded-lg"
                   style={{ backgroundColor: `${primaryColor}20`, color: primaryColor }}
@@ -305,7 +305,7 @@ export default async function FeaturePage({
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-slate-300 leading-relaxed">{benefit}</span>
+                    <span className="text-text-secondary leading-relaxed">{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -335,7 +335,7 @@ export default async function FeaturePage({
       {otherFeatures.length > 0 && (
         <section className="relative px-6 pb-24">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">
+            <h2 className="text-2xl font-bold text-text-primary mb-8 text-center">
               Explore more features
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -343,7 +343,7 @@ export default async function FeaturePage({
                 <a
                   key={f.title}
                   href={`/features/${slugify(f.title)}`}
-                  className="group relative rounded-2xl border border-white/10 p-6 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03]"
+                  className="group relative rounded-2xl border border-glass-border p-6 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03]"
                   style={{
                     background: "rgba(255, 255, 255, 0.02)",
                   }}
@@ -361,10 +361,10 @@ export default async function FeaturePage({
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">
+                  <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-white/90">
                     {f.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-text-secondary leading-relaxed">
                     {f.description}
                   </p>
 

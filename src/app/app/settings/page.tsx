@@ -8,8 +8,8 @@ export default async function SettingsPage() {
   return (
     <div className="max-w-2xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-white">Settings</h1>
-        <p className="text-sm text-slate-400 mt-1">Manage your account and preferences.</p>
+        <h1 className="text-2xl font-bold text-text-primary">Settings</h1>
+        <p className="text-sm text-text-secondary mt-1">Manage your account and preferences.</p>
       </div>
 
       <SettingsForm

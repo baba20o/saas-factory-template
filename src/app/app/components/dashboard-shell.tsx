@@ -62,15 +62,15 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
   const sidebarContent = (
     <>
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 h-16 border-b border-white/5">
+      <div className="flex items-center gap-3 px-4 h-16 border-b border-glass-border">
         <div
           className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-          style={{ background: `linear-gradient(135deg, ${config.primaryColor}, ${config.primaryColor}88)` }}
+          style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-glow))' }}
         >
           {config.logoText[0]}
         </div>
         {!collapsed && (
-          <span className="text-white font-semibold text-sm truncate">{config.logoText}</span>
+          <span className="text-text-primary font-semibold text-sm truncate">{config.logoText}</span>
         )}
       </div>
 
@@ -84,10 +84,10 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                 active
-                  ? "bg-white/10 text-white"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
+                  ? "bg-white/10 text-text-primary"
+                  : "text-text-secondary hover:text-white hover:bg-white/5"
               }`}
-              style={active ? { borderLeft: `2px solid ${config.primaryColor}` } : undefined}
+              style={active ? { borderLeft: '2px solid var(--color-primary)' } : undefined}
             >
               <DashIcon name={item.icon} className="w-5 h-5 flex-shrink-0" />
               {!collapsed && <span className="truncate">{item.label}</span>}
@@ -104,7 +104,7 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
               className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                 plan === "pro"
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                  : "bg-white/10 text-slate-400"
+                  : "bg-white/10 text-text-secondary"
               }`}
             >
               {plan === "pro" ? "Pro" : "Free"}
@@ -113,7 +113,7 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
         )}
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200 w-full"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-text-secondary hover:text-white hover:bg-white/5 transition-all duration-200 w-full"
         >
           <DashIcon name="log-out" className="w-5 h-5 flex-shrink-0" />
           {!collapsed && <span>Sign out</span>}
@@ -123,10 +123,10 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
   );
 
   return (
-    <div className="min-h-screen bg-[#050510] flex">
+    <div className="min-h-screen bg-background flex">
       {/* Desktop sidebar */}
       <aside
-        className={`hidden md:flex flex-col border-r border-white/5 bg-[#0a0a1a] transition-all duration-300 ${
+        className={`hidden md:flex flex-col border-r border-glass-border bg-surface transition-all duration-300 ${
           collapsed ? "w-[72px]" : "w-64"
         }`}
       >
@@ -134,7 +134,7 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
         {/* Collapse toggle */}
         <button
           onClick={toggleCollapse}
-          className="hidden md:flex items-center justify-center h-10 border-t border-white/5 text-slate-500 hover:text-white transition-colors"
+          className="hidden md:flex items-center justify-center h-10 border-t border-glass-border text-text-muted hover:text-white transition-colors"
         >
           <DashIcon name={collapsed ? "chevron-right" : "chevron-left"} className="w-4 h-4" />
         </button>
@@ -144,10 +144,10 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
-          <aside className="relative w-64 h-full bg-[#0a0a1a] flex flex-col">
+          <aside className="relative w-64 h-full bg-surface flex flex-col">
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white"
+              className="absolute top-4 right-4 text-text-secondary hover:text-white"
             >
               <DashIcon name="x" className="w-5 h-5" />
             </button>
@@ -159,10 +159,10 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="flex items-center justify-between h-16 px-6 border-b border-white/5 bg-[#0a0a1a]/50 backdrop-blur-xl">
+        <header className="flex items-center justify-between h-16 px-6 border-b border-glass-border bg-surface/50 backdrop-blur-xl">
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden text-slate-400 hover:text-white"
+            className="md:hidden text-text-secondary hover:text-white"
           >
             <DashIcon name="menu" className="w-5 h-5" />
           </button>
@@ -174,7 +174,7 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
               className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                 plan === "pro"
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                  : "bg-white/10 text-slate-400"
+                  : "bg-white/10 text-text-secondary"
               }`}
             >
               {plan === "pro" ? "Pro" : "Free plan"}
@@ -182,11 +182,11 @@ export function DashboardShell({ user, plan, config, children }: DashboardShellP
             <div className="flex items-center gap-2">
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                style={{ background: `linear-gradient(135deg, ${config.primaryColor}, ${config.primaryColor}88)` }}
+                style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-glow))' }}
               >
                 {user.email[0].toUpperCase()}
               </div>
-              <span className="hidden sm:block text-sm text-slate-400 truncate max-w-[200px]">
+              <span className="hidden sm:block text-sm text-text-secondary truncate max-w-[200px]">
                 {user.email}
               </span>
             </div>

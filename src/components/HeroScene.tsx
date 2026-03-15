@@ -161,12 +161,12 @@ export default function HeroScene({ primaryColor = "#6366f1" }: { primaryColor?:
         camera={{ position: [0, 0, 5], fov: 60 }}
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
-        style={{ background: "#050510" }}
+        style={{ background: 'var(--color-background)' }}
       >
         <Scene primaryColor={primaryColor} />
       </Canvas>
       {/* Gradient overlay to blend 3D into content */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050510]/30 via-transparent to-[#050510]/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/70 pointer-events-none" />
     </div>
   );
 }

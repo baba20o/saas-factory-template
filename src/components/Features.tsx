@@ -67,8 +67,8 @@ const accentGradients = [
   { from: "#f59e0b", to: "#ef4444" }, // amber -> red
 ];
 
-function getGradientForIndex(index: number, primaryColor: string) {
-  if (index === 0) return { from: primaryColor, to: accentGradients[0].to };
+function getGradientForIndex(index: number) {
+  if (index === 0) return { from: 'var(--color-primary)', to: accentGradients[0].to };
   return accentGradients[index % accentGradients.length];
 }
 
@@ -99,12 +99,12 @@ export default function Features({ features, primaryColor }: FeaturesProps) {
       id="features"
       ref={sectionRef}
       className="relative py-28 px-6 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)" }}
+      style={{ background: "linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface) 100%)" }}
     >
       {/* Subtle background decoration */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-[0.03] blur-3xl pointer-events-none"
-        style={{ background: primaryColor }}
+        style={{ background: 'var(--color-primary)' }}
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -119,35 +119,35 @@ export default function Features({ features, primaryColor }: FeaturesProps) {
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium mb-6"
             style={{
-              color: primaryColor,
-              backgroundColor: `${primaryColor}10`,
-              border: `1px solid ${primaryColor}20`,
+              color: 'var(--color-primary)',
+              backgroundColor: 'var(--color-primary-light)',
+              border: '1px solid color-mix(in srgb, var(--color-primary) 12%, transparent)',
             }}
           >
             <span className="relative flex h-2 w-2">
               <span
                 className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                style={{ backgroundColor: primaryColor }}
+                style={{ backgroundColor: 'var(--color-primary)' }}
               />
               <span
                 className="relative inline-flex rounded-full h-2 w-2"
-                style={{ backgroundColor: primaryColor }}
+                style={{ backgroundColor: 'var(--color-primary)' }}
               />
             </span>
             Powerful Features
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-5">
             Everything you need to{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: `linear-gradient(135deg, ${primaryColor}, ${accentGradients[0].to})`,
+                backgroundImage: `linear-gradient(135deg, var(--color-primary), ${accentGradients[0].to})`,
               }}
             >
               plan smarter
             </span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
             Powerful tools designed to transform the way you plan, execute, and deliver projects.
           </p>
         </div>
@@ -155,13 +155,13 @@ export default function Features({ features, primaryColor }: FeaturesProps) {
         {/* Feature cards grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => {
-            const gradient = getGradientForIndex(index, primaryColor);
+            const gradient = getGradientForIndex(index);
             const delay = index * 150;
 
             return (
               <div
                 key={feature.title}
-                className="group relative rounded-2xl bg-white p-8 transition-all duration-500 ease-out cursor-default"
+                className="group relative rounded-2xl bg-surface-elevated p-8 transition-all duration-500 ease-out cursor-default"
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible
@@ -220,10 +220,10 @@ export default function Features({ features, primaryColor }: FeaturesProps) {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">
+                  <h3 className="text-xl font-semibold text-text-primary mb-3 tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-500 leading-relaxed text-[15px]">
+                  <p className="text-text-muted leading-relaxed text-[15px]">
                     {feature.description}
                   </p>
                 </div>

@@ -59,7 +59,7 @@ export default function CustomersPage() {
   const { branding, hero, footer } = config;
 
   return (
-    <div className="min-h-screen bg-[#050510] text-gray-100">
+    <div className="min-h-screen bg-background text-text-primary">
       <Nav
         logoText={branding.logo_text}
         primaryColor={branding.primary_color}
@@ -69,10 +69,10 @@ export default function CustomersPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
           Trusted by teams that ship
         </h1>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
           From startups to enterprise engineering orgs, thousands of teams rely
           on PlanForge to plan faster and build smarter.
         </p>
@@ -84,7 +84,7 @@ export default function CustomersPage() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 text-center"
+              className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-md p-6 text-center"
             >
               <div
                 className="text-3xl font-bold mb-1"
@@ -92,7 +92,7 @@ export default function CustomersPage() {
               >
                 {stat.value}
               </div>
-              <div className="text-xs text-gray-500">{stat.label}</div>
+              <div className="text-xs text-text-muted">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -104,16 +104,16 @@ export default function CustomersPage() {
           {testimonials.map((t) => (
             <div
               key={t.author}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-8 hover:border-white/20 transition-colors duration-300"
+              className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-md p-8 hover:border-white/20 transition-colors duration-300"
             >
-              <p className="text-sm text-gray-300 leading-relaxed mb-6 italic">
+              <p className="text-sm text-text-secondary leading-relaxed mb-6 italic">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div>
-                <div className="text-sm font-semibold text-white">
+                <div className="text-sm font-semibold text-text-primary">
                   {t.author}
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-text-muted">
                   {t.title}, {t.company}
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function CustomersPage() {
 
       {/* CTA */}
       <section className="text-center px-6 pb-24">
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-2xl font-bold text-text-primary mb-4">
           Join thousands of teams shipping faster
         </h2>
         <a

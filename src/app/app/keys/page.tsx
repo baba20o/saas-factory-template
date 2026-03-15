@@ -21,30 +21,30 @@ export default async function KeysPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-white">API Keys</h1>
-        <p className="text-sm text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-text-primary">API Keys</h1>
+        <p className="text-sm text-text-secondary mt-1">
           Manage your API keys for programmatic access.
         </p>
       </div>
 
       {/* Usage stat */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6">
-          <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Active keys</p>
-          <p className="text-3xl font-bold text-white">
+        <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6">
+          <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Active keys</p>
+          <p className="text-3xl font-bold text-text-primary">
             {keys?.filter((k) => !k.revoked_at).length ?? 0}
           </p>
-          <p className="text-xs text-slate-500 mt-1">of 5 max</p>
+          <p className="text-xs text-text-muted mt-1">of 5 max</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6">
-          <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">API calls (30d)</p>
-          <p className="text-3xl font-bold text-white">{usageCount ?? 0}</p>
-          <p className="text-xs text-slate-500 mt-1">Last 30 days</p>
+        <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6">
+          <p className="text-xs text-text-muted uppercase tracking-wider mb-2">API calls (30d)</p>
+          <p className="text-3xl font-bold text-text-primary">{usageCount ?? 0}</p>
+          <p className="text-xs text-text-muted mt-1">Last 30 days</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6">
-          <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Rate limit</p>
-          <p className="text-3xl font-bold text-white">1,000</p>
-          <p className="text-xs text-slate-500 mt-1">requests / day</p>
+        <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6">
+          <p className="text-xs text-text-muted uppercase tracking-wider mb-2">Rate limit</p>
+          <p className="text-3xl font-bold text-text-primary">1,000</p>
+          <p className="text-xs text-text-muted mt-1">requests / day</p>
         </div>
       </div>
 

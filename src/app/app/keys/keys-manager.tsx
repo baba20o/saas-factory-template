@@ -83,20 +83,20 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
               <h3 className="text-sm font-semibold text-amber-400 mb-1">
                 Save your API key now — you won&apos;t see it again
               </h3>
-              <code className="block text-sm text-white bg-black/40 rounded-lg px-4 py-2.5 mt-2 break-all font-mono">
+              <code className="block text-sm text-text-primary bg-black/40 rounded-lg px-4 py-2.5 mt-2 break-all font-mono">
                 {newKeyRaw}
               </code>
             </div>
             <button
               onClick={copyKey}
-              className="shrink-0 px-4 py-2 rounded-lg text-sm font-medium text-white border border-white/10 hover:bg-white/5 transition-all cursor-pointer"
+              className="shrink-0 px-4 py-2 rounded-lg text-sm font-medium text-text-primary border border-glass-border hover:bg-white/5 transition-all cursor-pointer"
             >
               {copied ? "Copied!" : "Copy"}
             </button>
           </div>
           <button
             onClick={() => setNewKeyRaw(null)}
-            className="mt-3 text-xs text-slate-500 hover:text-slate-300 cursor-pointer"
+            className="mt-3 text-xs text-text-muted hover:text-slate-300 cursor-pointer"
           >
             Dismiss — I&apos;ve saved it
           </button>
@@ -105,11 +105,11 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
 
       {/* Create key */}
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-white">Active keys</h2>
+        <h2 className="text-lg font-semibold text-text-primary">Active keys</h2>
         {!showCreate && activeKeys.length < 5 && (
           <button
             onClick={() => setShowCreate(true)}
-            className="px-4 py-2 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:opacity-90 transition-all cursor-pointer"
+            className="px-4 py-2 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary to-primary/90 hover:opacity-90 transition-all cursor-pointer"
           >
             Create new key
           </button>
@@ -117,27 +117,27 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
       </div>
 
       {showCreate && (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 flex items-end gap-3">
+        <div className="rounded-2xl border border-glass-border bg-glass-surface p-6 flex items-end gap-3">
           <div className="flex-1">
-            <label className="block text-sm text-slate-400 mb-1.5">Key name</label>
+            <label className="block text-sm text-text-secondary mb-1.5">Key name</label>
             <input
               type="text"
               value={keyName}
               onChange={(e) => setKeyName(e.target.value)}
               placeholder="e.g. Production, Development"
-              className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+              className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-glass-border text-sm text-text-primary placeholder-slate-500 outline-none focus:ring-2 focus:ring-primary/50 transition-all"
             />
           </div>
           <button
             onClick={createKey}
             disabled={creating}
-            className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer shrink-0"
+            className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary to-primary/90 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer shrink-0"
           >
             {creating ? "Creating..." : "Create"}
           </button>
           <button
             onClick={() => setShowCreate(false)}
-            className="px-4 py-2.5 rounded-xl text-sm text-slate-400 border border-white/10 hover:bg-white/5 transition-all cursor-pointer shrink-0"
+            className="px-4 py-2.5 rounded-xl text-sm text-text-secondary border border-glass-border hover:bg-white/5 transition-all cursor-pointer shrink-0"
           >
             Cancel
           </button>
@@ -146,35 +146,35 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
 
       {/* Active keys table */}
       {activeKeys.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.01] p-12 text-center">
-          <p className="text-sm text-slate-500">No API keys yet</p>
-          <p className="text-xs text-slate-600 mt-1">Create a key to start using the API.</p>
+        <div className="rounded-2xl border-dashed border-border bg-glass-surface p-12 text-center">
+          <p className="text-sm text-text-muted">No API keys yet</p>
+          <p className="text-xs text-text-muted mt-1">Create a key to start using the API.</p>
         </div>
       ) : (
-        <div className="rounded-2xl border border-white/10 overflow-hidden">
+        <div className="rounded-2xl border border-glass-border overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-white/5 bg-white/[0.02]">
-                <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Name</th>
-                <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Key</th>
-                <th className="text-left text-xs text-slate-500 font-medium px-6 py-3 hidden sm:table-cell">Created</th>
-                <th className="text-left text-xs text-slate-500 font-medium px-6 py-3 hidden sm:table-cell">Last used</th>
-                <th className="text-right text-xs text-slate-500 font-medium px-6 py-3"></th>
+              <tr className="border-b border-glass-border bg-glass-surface">
+                <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Name</th>
+                <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Key</th>
+                <th className="text-left text-xs text-text-muted font-medium px-6 py-3 hidden sm:table-cell">Created</th>
+                <th className="text-left text-xs text-text-muted font-medium px-6 py-3 hidden sm:table-cell">Last used</th>
+                <th className="text-right text-xs text-text-muted font-medium px-6 py-3"></th>
               </tr>
             </thead>
             <tbody>
               {activeKeys.map((key) => (
-                <tr key={key.id} className="border-b border-white/5 last:border-0">
-                  <td className="px-6 py-4 text-sm text-white">{key.name}</td>
+                <tr key={key.id} className="border-b border-glass-border last:border-0">
+                  <td className="px-6 py-4 text-sm text-text-primary">{key.name}</td>
                   <td className="px-6 py-4">
-                    <code className="text-xs text-slate-400 font-mono bg-white/5 px-2 py-1 rounded">
+                    <code className="text-xs text-text-secondary font-mono bg-white/5 px-2 py-1 rounded">
                       {key.prefix}
                     </code>
                   </td>
-                  <td className="px-6 py-4 text-xs text-slate-500 hidden sm:table-cell">
+                  <td className="px-6 py-4 text-xs text-text-muted hidden sm:table-cell">
                     {new Date(key.created_at).toLocaleDateString()}
                   </td>
-                  <td className="px-6 py-4 text-xs text-slate-500 hidden sm:table-cell">
+                  <td className="px-6 py-4 text-xs text-text-muted hidden sm:table-cell">
                     {key.last_used_at
                       ? new Date(key.last_used_at).toLocaleDateString()
                       : "Never"}
@@ -197,17 +197,17 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
       {/* Revoked keys */}
       {revokedKeys.length > 0 && (
         <>
-          <h2 className="text-lg font-semibold text-white mt-8">Revoked keys</h2>
-          <div className="rounded-2xl border border-white/10 overflow-hidden opacity-60">
+          <h2 className="text-lg font-semibold text-text-primary mt-8">Revoked keys</h2>
+          <div className="rounded-2xl border border-glass-border overflow-hidden opacity-60">
             <table className="w-full">
               <tbody>
                 {revokedKeys.map((key) => (
-                  <tr key={key.id} className="border-b border-white/5 last:border-0">
-                    <td className="px-6 py-3 text-sm text-slate-500 line-through">{key.name}</td>
+                  <tr key={key.id} className="border-b border-glass-border last:border-0">
+                    <td className="px-6 py-3 text-sm text-text-muted line-through">{key.name}</td>
                     <td className="px-6 py-3">
-                      <code className="text-xs text-slate-600 font-mono">{key.prefix}</code>
+                      <code className="text-xs text-text-muted font-mono">{key.prefix}</code>
                     </td>
-                    <td className="px-6 py-3 text-xs text-slate-600">
+                    <td className="px-6 py-3 text-xs text-text-muted">
                       Revoked {new Date(key.revoked_at!).toLocaleDateString()}
                     </td>
                   </tr>
@@ -219,8 +219,8 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
       )}
 
       {/* Quick start */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-        <h3 className="text-lg font-semibold text-white mb-4">Quick start</h3>
+      <div className="rounded-2xl border border-glass-border bg-glass-surface p-8">
+        <h3 className="text-lg font-semibold text-text-primary mb-4">Quick start</h3>
         <pre className="text-sm text-slate-300 bg-black/40 rounded-xl p-4 overflow-x-auto font-mono">
 {`curl https://your-domain.com/api/v1/plans \\
   -H "Authorization: Bearer sk_live_your_key_here" \\

@@ -50,6 +50,34 @@ export interface FactoryConfig {
       key: string;
     }>;
   };
+  theme?: {
+    mode?: "dark" | "light";
+    colors?: {
+      primary?: string;
+      accent?: string;
+      background?: string;
+      surface?: string;
+      surface_elevated?: string;
+      border?: string;
+      text_primary?: string;
+      text_secondary?: string;
+      text_muted?: string;
+    };
+    derived?: {
+      primary_light?: string;
+      primary_glow?: string;
+      gradient_from?: string;
+      gradient_to?: string;
+    };
+    radius?: string;
+    glassmorphism?: boolean;
+  };
+  landing?: {
+    sections?: Array<{
+      type: string;
+      variant?: string;
+    }>;
+  };
 }
 
 export function slugify(title: string): string {

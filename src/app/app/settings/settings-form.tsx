@@ -62,25 +62,25 @@ export default function SettingsForm({
   }
 
   const inputClasses =
-    "w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-all";
+    "w-full px-4 py-2.5 rounded-xl bg-white/5 border border-glass-border text-sm text-text-primary placeholder-slate-500 outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all";
 
   return (
     <div className="space-y-8">
       {/* Profile */}
       <form
         onSubmit={handleProfileSubmit}
-        className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 space-y-5"
+        className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-8 space-y-5"
       >
-        <h2 className="text-lg font-semibold text-white">Profile</h2>
+        <h2 className="text-lg font-semibold text-text-primary">Profile</h2>
 
         <div>
-          <label className="block text-sm text-slate-400 mb-1.5">Email</label>
+          <label className="block text-sm text-text-secondary mb-1.5">Email</label>
           <input type="email" value={email} disabled className={`${inputClasses} opacity-60 cursor-not-allowed`} />
-          <p className="text-xs text-slate-600 mt-1">Email cannot be changed here.</p>
+          <p className="text-xs text-text-muted mt-1">Email cannot be changed here.</p>
         </div>
 
         <div>
-          <label className="block text-sm text-slate-400 mb-1.5">Display name</label>
+          <label className="block text-sm text-text-secondary mb-1.5">Display name</label>
           <input
             type="text"
             value={name}
@@ -93,7 +93,7 @@ export default function SettingsForm({
         <button
           type="submit"
           disabled={profileLoading}
-          className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer"
+          className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary to-primary/90 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer"
         >
           {profileLoading ? "Saving..." : "Save changes"}
         </button>
@@ -102,12 +102,12 @@ export default function SettingsForm({
       {/* Password */}
       <form
         onSubmit={handlePasswordSubmit}
-        className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 space-y-5"
+        className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-8 space-y-5"
       >
-        <h2 className="text-lg font-semibold text-white">Change password</h2>
+        <h2 className="text-lg font-semibold text-text-primary">Change password</h2>
 
         <div>
-          <label className="block text-sm text-slate-400 mb-1.5">New password</label>
+          <label className="block text-sm text-text-secondary mb-1.5">New password</label>
           <input
             type="password"
             value={newPassword}
@@ -118,7 +118,7 @@ export default function SettingsForm({
         </div>
 
         <div>
-          <label className="block text-sm text-slate-400 mb-1.5">Confirm password</label>
+          <label className="block text-sm text-text-secondary mb-1.5">Confirm password</label>
           <input
             type="password"
             value={confirmPassword}
@@ -131,7 +131,7 @@ export default function SettingsForm({
         <button
           type="submit"
           disabled={passwordLoading}
-          className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-500 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer"
+          className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary to-primary/90 hover:opacity-90 transition-all disabled:opacity-50 cursor-pointer"
         >
           {passwordLoading ? "Updating..." : "Update password"}
         </button>
@@ -140,7 +140,7 @@ export default function SettingsForm({
       {/* Danger zone */}
       <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-8">
         <h2 className="text-lg font-semibold text-red-400">Danger zone</h2>
-        <p className="text-sm text-slate-400 mt-1 mb-4">
+        <p className="text-sm text-text-secondary mt-1 mb-4">
           Once you delete your account, there is no going back. Please be certain.
         </p>
         <button

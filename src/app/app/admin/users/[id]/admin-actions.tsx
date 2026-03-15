@@ -38,8 +38,8 @@ export default function AdminActions({
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6">
-      <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Admin actions</h2>
+    <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6">
+      <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">Admin actions</h2>
 
       <div className="flex flex-wrap gap-3">
         {plan === "free" ? (
@@ -54,7 +54,7 @@ export default function AdminActions({
           <button
             onClick={() => handleAction("downgrade")}
             disabled={loading !== null}
-            className="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 border border-white/10 hover:bg-white/5 transition-all disabled:opacity-50 cursor-pointer"
+            className="px-4 py-2 rounded-xl text-sm font-medium text-slate-300 border border-glass-border hover:bg-white/5 transition-all disabled:opacity-50 cursor-pointer"
           >
             {loading === "downgrade" ? "Downgrading..." : "Downgrade to Free"}
           </button>

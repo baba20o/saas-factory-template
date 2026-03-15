@@ -258,13 +258,13 @@ const ACTIVITY_DATA = [
 
 export default function LiveMetrics({ primaryColor = "#6366f1" }: { primaryColor?: string }) {
   return (
-    <section className="py-20 px-6 bg-gray-950 border-t border-gray-800/50">
+    <section className="py-20 px-6 bg-background border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-text-primary mb-4">
             Built for Scale
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-text-secondary max-w-xl mx-auto">
             Real-time metrics from the PlanForge platform. Every number tells a story.
           </p>
         </div>
@@ -274,10 +274,10 @@ export default function LiveMetrics({ primaryColor = "#6366f1" }: { primaryColor
           {METRICS.map((metric) => (
             <div
               key={metric.label}
-              className="rounded-xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm hover:border-gray-700 transition-colors"
+              className="rounded-xl border border-border bg-surface/60 p-5 backdrop-blur-sm hover:border-border transition-colors"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="text-gray-400 text-sm">{metric.label}</span>
+                <span className="text-text-secondary text-sm">{metric.label}</span>
                 <span
                   className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                     metric.trendUp
@@ -288,7 +288,7 @@ export default function LiveMetrics({ primaryColor = "#6366f1" }: { primaryColor
                   {metric.trend}
                 </span>
               </div>
-              <div className="text-2xl font-bold text-white mb-3">
+              <div className="text-2xl font-bold text-text-primary mb-3">
                 <AnimatedCounter value={metric.value} suffix={metric.suffix} />
               </div>
               <MiniChart data={metric.sparkline} color={metric.color} />
@@ -297,11 +297,11 @@ export default function LiveMetrics({ primaryColor = "#6366f1" }: { primaryColor
         </div>
 
         {/* Activity bar */}
-        <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-6 backdrop-blur-sm">
+        <div className="rounded-xl border border-border bg-surface/60 p-6 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-white font-semibold">Daily Activity</h3>
-              <p className="text-gray-500 text-sm">Plans generated over the last 30 days</p>
+              <h3 className="text-text-primary font-semibold">Daily Activity</h3>
+              <p className="text-text-muted text-sm">Plans generated over the last 30 days</p>
             </div>
             <div className="flex gap-2">
               {["7d", "14d", "30d"].map((range) => (
@@ -309,8 +309,8 @@ export default function LiveMetrics({ primaryColor = "#6366f1" }: { primaryColor
                   key={range}
                   className={`text-xs px-3 py-1 rounded-full transition-colors ${
                     range === "30d"
-                      ? "bg-indigo-500/20 text-indigo-300"
-                      : "text-gray-500 hover:text-gray-300"
+                      ? "bg-primary-light text-primary"
+                      : "text-text-muted hover:text-text-secondary"
                   }`}
                 >
                   {range}

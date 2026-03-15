@@ -130,10 +130,10 @@ function SocialIcon({
   return (
     <a
       href="#"
-      className="w-9 h-9 rounded-full flex items-center justify-center text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
+      className="w-9 h-9 rounded-full flex items-center justify-center text-text-secondary transition-all duration-200 hover:text-text-primary hover:scale-110"
       style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.backgroundColor = primaryColor;
+        (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--color-primary)';
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.backgroundColor =
@@ -170,12 +170,12 @@ export default function Footer({
   };
 
   return (
-    <footer className="relative bg-gray-900 text-gray-300 overflow-hidden">
+    <footer className="relative bg-surface text-text-secondary overflow-hidden">
       {/* Gradient top border */}
       <div
         className="h-px w-full"
         style={{
-          background: `linear-gradient(90deg, transparent 0%, ${primaryColor}60 20%, ${primaryColor} 50%, ${primaryColor}60 80%, transparent 100%)`,
+          background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-primary) 38%, transparent) 20%, var(--color-primary) 50%, color-mix(in srgb, var(--color-primary) 38%, transparent) 80%, transparent 100%)`,
         }}
       />
 
@@ -183,7 +183,7 @@ export default function Footer({
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(135deg, ${primaryColor}08 0%, transparent 40%, ${primaryColor}05 100%)`,
+          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 3%, transparent) 0%, transparent 40%, color-mix(in srgb, var(--color-primary) 2%, transparent) 100%)`,
         }}
       />
 
@@ -193,12 +193,11 @@ export default function Footer({
           {/* Brand column — col-span-2 on large */}
           <div className="lg:col-span-2">
             <span
-              className="text-xl font-bold block mb-3"
-              style={{ color: primaryColor }}
+              className="text-xl font-bold block mb-3 text-primary"
             >
               {logoText}
             </span>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
+            <p className="text-sm text-text-secondary leading-relaxed mb-6">
               {description ||
                 "AI-powered project planning that turns your ideas into actionable roadmaps in seconds."}
             </p>
@@ -217,7 +216,7 @@ export default function Footer({
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8">
               {linkGroups.map((group) => (
                 <div key={group.title}>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">
                     {group.title}
                   </h4>
                   <ul className="space-y-2.5">
@@ -228,7 +227,7 @@ export default function Footer({
                           {...(link.external
                             ? { target: "_blank", rel: "noopener noreferrer" }
                             : {})}
-                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
+                          className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200 inline-flex items-center gap-1"
                         >
                           {link.label}
                           {link.external && (
@@ -257,10 +256,10 @@ export default function Footer({
 
           {/* Newsletter column */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">
               Stay updated
             </h4>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-text-muted mb-4">
               Get product updates and tips delivered to your inbox. No spam,
               unsubscribe anytime.
             </p>
@@ -271,12 +270,12 @@ export default function Footer({
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"
                 required
-                className="w-full px-4 py-2.5 rounded-lg bg-gray-800/60 border border-gray-700/60 text-sm text-white placeholder-gray-500 outline-none transition-all duration-200 focus:border-transparent backdrop-blur-sm"
+                className="w-full px-4 py-2.5 rounded-lg bg-surface-elevated/60 border border-border/60 text-sm text-text-primary placeholder-text-muted outline-none transition-all duration-200 focus:border-transparent backdrop-blur-sm"
                 style={{
                   boxShadow: "none",
                 }}
                 onFocus={(e) => {
-                  (e.target as HTMLElement).style.boxShadow = `0 0 0 2px ${primaryColor}60`;
+                  (e.target as HTMLElement).style.boxShadow = `0 0 0 2px color-mix(in srgb, var(--color-primary) 38%, transparent)`;
                 }}
                 onBlur={(e) => {
                   (e.target as HTMLElement).style.boxShadow = "none";
@@ -286,15 +285,15 @@ export default function Footer({
                 type="submit"
                 className="w-full px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg cursor-pointer"
                 style={{
-                  background: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}dd)`,
+                  background: `linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 87%, transparent))`,
                 }}
               >
                 {subscribed ? "Subscribed!" : "Subscribe"}
               </button>
             </form>
-            <p className="text-xs text-gray-600 mt-3">
+            <p className="text-xs text-text-muted mt-3">
               By subscribing you agree to our{" "}
-              <a href="/privacy" className="underline hover:text-gray-400">
+              <a href="/privacy" className="underline hover:text-text-secondary">
                 Privacy Policy
               </a>
               .
@@ -303,8 +302,8 @@ export default function Footer({
         </div>
 
         {/* Recent blog posts section */}
-        <div className="border-t border-gray-800/60 pt-8 mb-8">
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-5">
+        <div className="border-t border-border/60 pt-8 mb-8">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-5">
             From the blog
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -312,19 +311,19 @@ export default function Footer({
               <a
                 key={post.title}
                 href={post.href}
-                className="group rounded-lg p-4 transition-all duration-200 hover:bg-white/[0.03] border border-transparent hover:border-gray-800"
+                className="group rounded-lg p-4 transition-all duration-200 hover:bg-glass-surface border border-transparent hover:border-border"
               >
-                <p className="text-sm text-gray-300 group-hover:text-white transition-colors duration-200 mb-1.5 line-clamp-2">
+                <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors duration-200 mb-1.5 line-clamp-2">
                   {post.title}
                 </p>
-                <span className="text-xs text-gray-600">{post.date}</span>
+                <span className="text-xs text-text-muted">{post.date}</span>
               </a>
             ))}
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <span>
             &copy; {new Date().getFullYear()} {company}. All rights reserved.
           </span>
@@ -337,7 +336,7 @@ export default function Footer({
           </span>
           <button
             onClick={scrollToTop}
-            className="group flex items-center gap-1.5 text-gray-500 hover:text-white transition-colors duration-200 cursor-pointer"
+            className="group flex items-center gap-1.5 text-text-muted hover:text-text-primary transition-colors duration-200 cursor-pointer"
           >
             Back to top
             <svg

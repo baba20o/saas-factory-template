@@ -153,30 +153,30 @@ function CTAButton({
         highlighted
           ? {
               color: "#fff",
-              backgroundImage: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}dd)`,
-              boxShadow: `0 8px 24px -4px ${primaryColor}50`,
+              backgroundImage: `linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 87%, transparent))`,
+              boxShadow: `0 8px 24px -4px color-mix(in srgb, var(--color-primary) 31%, transparent)`,
             }
           : {
-              color: primaryColor,
-              backgroundColor: `${primaryColor}08`,
-              border: `1.5px solid ${primaryColor}30`,
+              color: 'var(--color-primary)',
+              backgroundColor: 'color-mix(in srgb, var(--color-primary) 3%, transparent)',
+              border: `1.5px solid color-mix(in srgb, var(--color-primary) 19%, transparent)`,
             }
       }
       onMouseEnter={(e) => {
         if (highlighted) {
-          e.currentTarget.style.boxShadow = `0 12px 32px -4px ${primaryColor}70`;
+          e.currentTarget.style.boxShadow = `0 12px 32px -4px color-mix(in srgb, var(--color-primary) 44%, transparent)`;
           e.currentTarget.style.transform = "translateY(-1px)";
         } else {
-          e.currentTarget.style.backgroundColor = `${primaryColor}15`;
+          e.currentTarget.style.backgroundColor = `color-mix(in srgb, var(--color-primary) 8%, transparent)`;
           e.currentTarget.style.transform = "translateY(-1px)";
         }
       }}
       onMouseLeave={(e) => {
         if (highlighted) {
-          e.currentTarget.style.boxShadow = `0 8px 24px -4px ${primaryColor}50`;
+          e.currentTarget.style.boxShadow = `0 8px 24px -4px color-mix(in srgb, var(--color-primary) 31%, transparent)`;
           e.currentTarget.style.transform = "translateY(0)";
         } else {
-          e.currentTarget.style.backgroundColor = `${primaryColor}08`;
+          e.currentTarget.style.backgroundColor = `color-mix(in srgb, var(--color-primary) 3%, transparent)`;
           e.currentTarget.style.transform = "translateY(0)";
         }
       }}
@@ -191,7 +191,7 @@ function CTAButton({
             top: ripple.y - 10,
             width: 20,
             height: 20,
-            backgroundColor: highlighted ? "rgba(255,255,255,0.4)" : `${primaryColor}30`,
+            backgroundColor: highlighted ? "rgba(255,255,255,0.4)" : `color-mix(in srgb, var(--color-primary) 19%, transparent)`,
           }}
         />
       ))}
@@ -258,16 +258,16 @@ export default function Pricing({ pricing, primaryColor, ctaLink }: PricingProps
     <section
       id="pricing"
       ref={sectionRef}
-      className="relative py-28 px-6 overflow-hidden bg-white"
+      className="relative py-28 px-6 overflow-hidden bg-surface-elevated"
     >
       {/* Background orbs */}
       <div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ backgroundColor: primaryColor }}
+        style={{ backgroundColor: 'var(--color-primary)' }}
       />
       <div
         className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.03] blur-3xl pointer-events-none"
-        style={{ backgroundColor: primaryColor }}
+        style={{ backgroundColor: 'var(--color-primary)' }}
       />
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -282,25 +282,25 @@ export default function Pricing({ pricing, primaryColor, ctaLink }: PricingProps
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium mb-6"
             style={{
-              color: primaryColor,
-              backgroundColor: `${primaryColor}10`,
-              border: `1px solid ${primaryColor}20`,
+              color: 'var(--color-primary)',
+              backgroundColor: 'var(--color-primary-light)',
+              border: '1px solid color-mix(in srgb, var(--color-primary) 12%, transparent)',
             }}
           >
             Pricing
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-5">
             Simple, transparent{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: `linear-gradient(135deg, ${primaryColor}, #8b5cf6)`,
+                backgroundImage: `linear-gradient(135deg, var(--color-primary), #8b5cf6)`,
               }}
             >
               pricing
             </span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-text-muted max-w-xl mx-auto leading-relaxed">
             Start free and upgrade when you need more. No hidden fees, cancel anytime.
           </p>
         </div>
@@ -384,7 +384,7 @@ function PricingCard({
         <div
           className="absolute inset-0 rounded-3xl"
           style={{
-            background: `linear-gradient(135deg, ${primaryColor}, #8b5cf6, ${primaryColor})`,
+            background: `linear-gradient(135deg, var(--color-primary), #8b5cf6, var(--color-primary))`,
             backgroundSize: "200% 200%",
             animation: "gradient-shift 3s ease infinite",
           }}
@@ -393,12 +393,12 @@ function PricingCard({
 
       <div
         className={`relative rounded-3xl p-8 md:p-10 h-full ${
-          tier.highlighted ? "bg-white" : "bg-white border border-gray-200/80"
+          tier.highlighted ? "bg-surface-elevated" : "bg-surface-elevated border border-border/80"
         }`}
         style={
           tier.highlighted
             ? {
-                boxShadow: `0 25px 60px -12px ${primaryColor}25, 0 0 0 1px ${primaryColor}10`,
+                boxShadow: `0 25px 60px -12px color-mix(in srgb, var(--color-primary) 15%, transparent), 0 0 0 1px color-mix(in srgb, var(--color-primary) 6%, transparent)`,
               }
             : undefined
         }
@@ -408,8 +408,8 @@ function PricingCard({
           <div
             className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1 rounded-full text-xs font-bold tracking-widest text-white uppercase"
             style={{
-              backgroundImage: `linear-gradient(135deg, ${primaryColor}, #8b5cf6)`,
-              boxShadow: `0 4px 12px ${primaryColor}40`,
+              backgroundImage: `linear-gradient(135deg, var(--color-primary), #8b5cf6)`,
+              boxShadow: `0 4px 12px color-mix(in srgb, var(--color-primary) 25%, transparent)`,
             }}
           >
             Popular
@@ -418,10 +418,10 @@ function PricingCard({
 
         {/* Plan name */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h3 className="text-lg font-semibold text-text-primary mb-1">
             {tier.name}
           </h3>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-text-secondary">
             {tier.highlighted
               ? "For teams and power users"
               : "Perfect for getting started"}
@@ -431,22 +431,22 @@ function PricingCard({
         {/* Price */}
         <div className="mb-8 flex items-baseline gap-1">
           {tier.price === 0 ? (
-            <span className="text-5xl font-extrabold tracking-tight text-gray-900">
+            <span className="text-5xl font-extrabold tracking-tight text-text-primary">
               Free
             </span>
           ) : (
             <>
-              <span className="text-2xl font-bold text-gray-400">$</span>
+              <span className="text-2xl font-bold text-text-secondary">$</span>
               <span
                 className="text-6xl font-extrabold tracking-tight"
-                style={{ color: tier.highlighted ? primaryColor : "#111827" }}
+                style={{ color: tier.highlighted ? 'var(--color-primary)' : 'var(--color-text-primary)' }}
               >
                 {animatedPrice}
               </span>
             </>
           )}
           {tier.price > 0 && (
-            <span className="text-gray-400 text-sm font-medium ml-1">
+            <span className="text-text-secondary text-sm font-medium ml-1">
               /{tier.interval}
             </span>
           )}
@@ -457,18 +457,18 @@ function PricingCard({
           className="h-px mb-8"
           style={{
             backgroundImage: tier.highlighted
-              ? `linear-gradient(90deg, transparent, ${primaryColor}30, transparent)`
-              : "linear-gradient(90deg, transparent, #e5e7eb, transparent)",
+              ? `linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-primary) 19%, transparent), transparent)`
+              : "linear-gradient(90deg, transparent, var(--color-border), transparent)",
           }}
         />
 
         {/* Features list */}
         <ul className="space-y-4 mb-10">
           {tier.features.map((feat, i) => (
-            <li key={feat} className="flex items-start gap-3 text-sm text-gray-600">
+            <li key={feat} className="flex items-start gap-3 text-sm text-text-muted">
               <AnimatedCheck
                 delay={i * 100}
-                color={tier.highlighted ? primaryColor : "#10b981"}
+                color={tier.highlighted ? 'var(--color-primary)' : "#10b981"}
                 visible={isVisible}
               />
               <span className="leading-relaxed">{feat}</span>

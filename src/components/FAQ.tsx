@@ -52,10 +52,10 @@ function AccordionItem({
 }) {
   return (
     <div
-      className="border-b border-gray-200 last:border-b-0 transition-colors duration-200"
+      className="border-b border-border last:border-b-0 transition-colors duration-200"
       style={
         isOpen
-          ? { borderColor: `${primaryColor}30` }
+          ? { borderColor: 'color-mix(in srgb, var(--color-primary) 19%, transparent)' }
           : undefined
       }
     >
@@ -64,15 +64,15 @@ function AccordionItem({
         className="w-full flex items-center justify-between py-5 px-1 text-left group cursor-pointer"
       >
         <span
-          className="text-[15px] md:text-base font-medium text-gray-900 pr-4 transition-colors duration-200"
-          style={isOpen ? { color: primaryColor } : undefined}
+          className="text-[15px] md:text-base font-medium text-text-primary pr-4 transition-colors duration-200"
+          style={isOpen ? { color: 'var(--color-primary)' } : undefined}
         >
           {item.question}
         </span>
         <span
           className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:shadow-md"
           style={{
-            backgroundColor: isOpen ? primaryColor : "#f3f4f6",
+            backgroundColor: isOpen ? 'var(--color-primary)' : '#f3f4f6',
             transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
           }}
         >
@@ -99,7 +99,7 @@ function AccordionItem({
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <p className="text-gray-600 text-sm leading-relaxed pb-5 px-1 pr-12">
+        <p className="text-text-muted text-sm leading-relaxed pb-5 px-1 pr-12">
           {item.answer}
         </p>
       </div>
@@ -111,25 +111,24 @@ export default function FAQ({ primaryColor }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 px-6 bg-gray-50/70">
+    <section className="py-20 px-6 bg-surface/70">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-14">
           <p
-            className="text-sm font-semibold tracking-widest uppercase mb-3"
-            style={{ color: primaryColor }}
+            className="text-sm font-semibold tracking-widest uppercase mb-3 text-primary"
           >
             FAQ
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary mb-4">
             Frequently asked questions
           </h2>
-          <p className="text-gray-500">
+          <p className="text-text-muted">
             Everything you need to know about PlanForge.
           </p>
         </div>
 
         <div
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 px-6 md:px-8"
+          className="bg-surface-elevated rounded-2xl shadow-sm border border-border px-6 md:px-8"
           style={{
             boxShadow: "0 4px 24px rgba(0,0,0,0.04)",
           }}
@@ -145,12 +144,11 @@ export default function FAQ({ primaryColor }: FAQProps) {
           ))}
         </div>
 
-        <p className="text-center mt-8 text-sm text-gray-500">
+        <p className="text-center mt-8 text-sm text-text-muted">
           Still have questions?{" "}
           <a
             href="mailto:support@planforge.dev"
-            className="font-medium underline underline-offset-2 transition-colors duration-200 hover:opacity-80"
-            style={{ color: primaryColor }}
+            className="font-medium underline underline-offset-2 transition-colors duration-200 hover:opacity-80 text-primary"
           >
             Get in touch
           </a>

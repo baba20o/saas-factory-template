@@ -52,46 +52,46 @@ export default async function UserDetailPage({
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="flex items-center gap-3">
-        <Link href="/app/admin" className="text-slate-500 hover:text-white transition-colors">
+        <Link href="/app/admin" className="text-text-muted hover:text-white transition-colors">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-white">{targetUser.email}</h1>
-          <p className="text-sm text-slate-400 mt-0.5">User detail — {targetUser.id}</p>
+          <h1 className="text-2xl font-bold text-text-primary">{targetUser.email}</h1>
+          <p className="text-sm text-text-secondary mt-0.5">User detail — {targetUser.id}</p>
         </div>
       </div>
 
       {/* User info cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 space-y-3">
-          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Profile</h2>
+        <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6 space-y-3">
+          <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wider">Profile</h2>
           <div>
-            <p className="text-xs text-slate-500">Email</p>
-            <p className="text-sm text-white">{targetUser.email}</p>
+            <p className="text-xs text-text-muted">Email</p>
+            <p className="text-sm text-text-primary">{targetUser.email}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-500">Name</p>
-            <p className="text-sm text-white">{targetUser.user_metadata?.full_name || "—"}</p>
+            <p className="text-xs text-text-muted">Name</p>
+            <p className="text-sm text-text-primary">{targetUser.user_metadata?.full_name || "—"}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-500">Signed up</p>
-            <p className="text-sm text-white">
+            <p className="text-xs text-text-muted">Signed up</p>
+            <p className="text-sm text-text-primary">
               {targetUser.created_at ? new Date(targetUser.created_at).toLocaleString() : "—"}
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-500">Last sign in</p>
-            <p className="text-sm text-white">
+            <p className="text-xs text-text-muted">Last sign in</p>
+            <p className="text-sm text-text-primary">
               {targetUser.last_sign_in_at
                 ? new Date(targetUser.last_sign_in_at).toLocaleString()
                 : "Never"}
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-500">Provider</p>
-            <p className="text-sm text-white">
+            <p className="text-xs text-text-muted">Provider</p>
+            <p className="text-sm text-text-primary">
               {targetUser.app_metadata?.provider ?? "email"}
             </p>
           </div>
@@ -100,7 +100,7 @@ export default async function UserDetailPage({
               className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                 plan === "pro"
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                  : "bg-white/10 text-slate-400"
+                  : "bg-white/10 text-text-secondary"
               }`}
             >
               {plan === "pro" ? "Pro" : "Free"}
@@ -113,37 +113,37 @@ export default async function UserDetailPage({
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 space-y-3">
-          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Subscription</h2>
+        <div className="rounded-2xl border border-glass-border bg-glass-surface backdrop-blur-xl p-6 space-y-3">
+          <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wider">Subscription</h2>
           {sub ? (
             <>
               <div>
-                <p className="text-xs text-slate-500">Plan</p>
-                <p className="text-sm text-white capitalize">{sub.plan_name}</p>
+                <p className="text-xs text-text-muted">Plan</p>
+                <p className="text-sm text-text-primary capitalize">{sub.plan_name}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">Status</p>
-                <p className="text-sm text-white capitalize">{sub.status}</p>
+                <p className="text-xs text-text-muted">Status</p>
+                <p className="text-sm text-text-primary capitalize">{sub.status}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">Stripe Customer ID</p>
-                <p className="text-sm text-white font-mono text-xs">{sub.stripe_customer_id || "—"}</p>
+                <p className="text-xs text-text-muted">Stripe Customer ID</p>
+                <p className="text-sm text-text-primary font-mono text-xs">{sub.stripe_customer_id || "—"}</p>
               </div>
               {sub.current_period_end && (
                 <div>
-                  <p className="text-xs text-slate-500">Renews</p>
-                  <p className="text-sm text-white">
+                  <p className="text-xs text-text-muted">Renews</p>
+                  <p className="text-sm text-text-primary">
                     {new Date(sub.current_period_end).toLocaleDateString()}
                   </p>
                 </div>
               )}
             </>
           ) : (
-            <p className="text-sm text-slate-500">No subscription record. Default free plan.</p>
+            <p className="text-sm text-text-muted">No subscription record. Default free plan.</p>
           )}
-          <div className="pt-2 border-t border-white/5">
-            <p className="text-xs text-slate-500">API usage (30d)</p>
-            <p className="text-2xl font-bold text-white">{usageCount}</p>
+          <div className="pt-2 border-t border-glass-border">
+            <p className="text-xs text-text-muted">API usage (30d)</p>
+            <p className="text-2xl font-bold text-text-primary">{usageCount}</p>
           </div>
         </div>
       </div>
@@ -153,27 +153,27 @@ export default async function UserDetailPage({
 
       {/* API Keys */}
       <div>
-        <h2 className="text-lg font-semibold text-white mb-4">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">
           API Keys ({keys?.filter((k) => !k.revoked_at).length ?? 0} active)
         </h2>
         {keys && keys.length > 0 ? (
-          <div className="rounded-2xl border border-white/10 overflow-hidden">
+          <div className="rounded-2xl border border-glass-border overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/5 bg-white/[0.02]">
-                  <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Name</th>
-                  <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Prefix</th>
-                  <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Status</th>
-                  <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Created</th>
-                  <th className="text-left text-xs text-slate-500 font-medium px-6 py-3">Last used</th>
+                <tr className="border-b border-glass-border bg-glass-surface">
+                  <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Name</th>
+                  <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Prefix</th>
+                  <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Status</th>
+                  <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Created</th>
+                  <th className="text-left text-xs text-text-muted font-medium px-6 py-3">Last used</th>
                 </tr>
               </thead>
               <tbody>
                 {keys.map((k) => (
-                  <tr key={k.id} className="border-b border-white/5 last:border-0">
-                    <td className="px-6 py-3 text-sm text-white">{k.name}</td>
+                  <tr key={k.id} className="border-b border-glass-border last:border-0">
+                    <td className="px-6 py-3 text-sm text-text-primary">{k.name}</td>
                     <td className="px-6 py-3">
-                      <code className="text-xs text-slate-400 font-mono">{k.prefix}</code>
+                      <code className="text-xs text-text-secondary font-mono">{k.prefix}</code>
                     </td>
                     <td className="px-6 py-3">
                       {k.revoked_at ? (
@@ -182,10 +182,10 @@ export default async function UserDetailPage({
                         <span className="text-xs text-green-400">Active</span>
                       )}
                     </td>
-                    <td className="px-6 py-3 text-xs text-slate-500">
+                    <td className="px-6 py-3 text-xs text-text-muted">
                       {new Date(k.created_at).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-3 text-xs text-slate-500">
+                    <td className="px-6 py-3 text-xs text-text-muted">
                       {k.last_used_at ? new Date(k.last_used_at).toLocaleDateString() : "Never"}
                     </td>
                   </tr>
@@ -194,8 +194,8 @@ export default async function UserDetailPage({
             </table>
           </div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.01] p-8 text-center">
-            <p className="text-sm text-slate-500">No API keys</p>
+          <div className="rounded-2xl border-dashed border-border bg-glass-surface p-8 text-center">
+            <p className="text-sm text-text-muted">No API keys</p>
           </div>
         )}
       </div>

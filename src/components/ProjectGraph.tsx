@@ -246,18 +246,18 @@ export default function ProjectGraph({ primaryColor = "#6366f1" }: { primaryColo
   }, [isVisible, dimensions, primaryColor]);
 
   return (
-    <section ref={containerRef} className="py-20 px-6 bg-gray-950 overflow-hidden">
+    <section ref={containerRef} className="py-20 px-6 bg-background overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-text-primary mb-4">
             See Your Project Come to Life
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-text-secondary max-w-xl mx-auto">
             PlanForge maps your entire project as an interactive dependency graph.
             Drag nodes to explore relationships. This is what AI planning looks like.
           </p>
         </div>
-        <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-4 backdrop-blur-sm">
+        <div className="rounded-2xl border border-border bg-surface/50 p-4 backdrop-blur-sm">
           <svg
             ref={svgRef}
             width={dimensions.width}
@@ -266,7 +266,7 @@ export default function ProjectGraph({ primaryColor = "#6366f1" }: { primaryColo
             className="w-full h-auto"
           />
         </div>
-        <p className="text-center text-gray-500 text-sm mt-4">
+        <p className="text-center text-text-muted text-sm mt-4">
           Interactive — drag nodes to explore the project structure
         </p>
       </div>

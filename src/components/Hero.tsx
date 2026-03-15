@@ -32,10 +32,10 @@ export default function Hero({
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#050510]">
+    <section className="relative min-h-screen overflow-hidden bg-background">
       {/* ── Three.js 3D background ── */}
       <Suspense fallback={
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#1a0533] via-[#0a1628] to-[#050510]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#1a0533] via-[#0a1628] to-background" />
       }>
         <HeroScene primaryColor={primaryColor} />
       </Suspense>
@@ -67,7 +67,7 @@ export default function Hero({
           className="animate-fade-in-up text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
           style={{ animationDelay: "0.15s" }}
         >
-          <span className="block text-white">Ship projects</span>
+          <span className="block text-text-primary">Ship projects</span>
           <span
             className="animate-shimmer bg-clip-text text-transparent"
             style={{
@@ -82,7 +82,7 @@ export default function Hero({
 
         {/* Subheadline — fade-in */}
         <p
-          className={`mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-400 transition-all duration-1000 sm:text-xl ${
+          className={`mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary transition-all duration-1000 sm:text-xl ${
             subheadlineVisible
               ? "translate-y-0 opacity-100"
               : "translate-y-4 opacity-0"
@@ -122,7 +122,7 @@ export default function Hero({
 
           <a
             href="#demo"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-slate-300 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-xl border border-glass-border bg-glass-surface px-6 py-3.5 text-sm font-medium text-text-secondary backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-text-primary"
           >
             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
@@ -137,19 +137,19 @@ export default function Hero({
           className="animate-fade-in-up mx-auto mt-20 w-full max-w-3xl"
           style={{ animationDelay: "0.7s" }}
         >
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 shadow-2xl shadow-purple-500/10 backdrop-blur-md">
+          <div className="rounded-2xl border border-glass-border bg-glass-surface p-1.5 shadow-2xl shadow-purple-500/10 backdrop-blur-md">
             {/* Title bar */}
-            <div className="flex items-center gap-2 rounded-t-xl bg-white/[0.04] px-4 py-3">
+            <div className="flex items-center gap-2 rounded-t-xl bg-glass-surface px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-red-500/70" />
               <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
               <span className="h-3 w-3 rounded-full bg-green-500/70" />
-              <span className="ml-3 flex-1 rounded-md bg-white/5 px-4 py-1 text-xs text-slate-500">
+              <span className="ml-3 flex-1 rounded-md bg-glass-surface px-4 py-1 text-xs text-text-muted">
                 app.planforge.dev/project/new
               </span>
             </div>
 
             {/* Browser body */}
-            <div className="rounded-b-xl bg-[#0c0c1d] px-6 py-6">
+            <div className="rounded-b-xl bg-surface-elevated px-6 py-6">
               {/* Prompt area */}
               <div className="mb-5 flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/20">
@@ -167,7 +167,7 @@ export default function Hero({
                     />
                   </svg>
                 </div>
-                <div className="text-sm text-slate-300">
+                <div className="text-sm text-text-secondary">
                   &quot;Build a marketplace app with payments and reviews&quot;
                 </div>
                 <span className="ml-auto animate-pulse rounded-md bg-purple-500/20 px-2 py-0.5 text-[11px] font-medium text-purple-400">
@@ -186,7 +186,7 @@ export default function Hero({
                     <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded bg-green-500/20 text-[10px] text-green-400">
                       ✓
                     </span>
-                    <span className="text-xs text-slate-400">{line.label}</span>
+                    <span className="text-xs text-text-secondary">{line.label}</span>
                     <div className="flex-1">
                       <div
                         className={`${line.width} h-1.5 rounded-full bg-gradient-to-r from-purple-500/40 to-blue-500/40`}
@@ -212,10 +212,10 @@ export default function Hero({
           ].map((stat, i) => (
             <div
               key={i}
-              className="rounded-xl border border-white/5 bg-white/[0.02] px-4 py-5 backdrop-blur-sm"
+              className="rounded-xl border border-glass-border bg-glass-surface px-4 py-5 backdrop-blur-sm"
             >
-              <div className="text-2xl font-bold text-white">{stat.value}</div>
-              <div className="mt-1 text-xs text-slate-500">{stat.label}</div>
+              <div className="text-2xl font-bold text-text-primary">{stat.value}</div>
+              <div className="mt-1 text-xs text-text-muted">{stat.label}</div>
             </div>
           ))}
         </div>

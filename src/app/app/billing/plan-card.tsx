@@ -43,14 +43,14 @@ export default function PlanCard({
     <div
       className={`rounded-2xl border p-6 transition-all ${
         isCurrent
-          ? "border-indigo-500/50 bg-indigo-500/5"
-          : "border-white/10 bg-white/[0.03]"
+          ? "border-primary/50 bg-primary-light"
+          : "border-glass-border bg-glass-surface"
       }`}
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white">{name}</h3>
+        <h3 className="text-lg font-semibold text-text-primary">{name}</h3>
         {isCurrent && (
-          <span className="text-xs font-medium text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full">
+          <span className="text-xs font-medium text-primary bg-primary-light px-2 py-0.5 rounded-full">
             Current
           </span>
         )}
@@ -58,21 +58,21 @@ export default function PlanCard({
 
       <div className="mb-6">
         {price === 0 ? (
-          <span className="text-3xl font-bold text-white">Free</span>
+          <span className="text-3xl font-bold text-text-primary">Free</span>
         ) : (
           <div className="flex items-baseline gap-1">
-            <span className="text-3xl font-bold text-white">${price}</span>
-            <span className="text-sm text-slate-500">/{interval}</span>
+            <span className="text-3xl font-bold text-text-primary">${price}</span>
+            <span className="text-sm text-text-muted">/{interval}</span>
           </div>
         )}
       </div>
 
       <ul className="space-y-2.5 mb-6">
         {features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-sm text-slate-400">
+          <li key={f} className="flex items-start gap-2 text-sm text-text-secondary">
             <svg
               className="w-4 h-4 flex-shrink-0 mt-0.5"
-              style={{ color: primaryColor }}
+              style={{ color: 'var(--color-primary)' }}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -91,8 +91,8 @@ export default function PlanCard({
           disabled={loading}
           className="w-full px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-all hover:brightness-110 disabled:opacity-50 cursor-pointer"
           style={{
-            background: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}dd)`,
-            boxShadow: `0 4px 16px ${primaryColor}30`,
+            background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-glow))',
+            boxShadow: '0 4px 16px color-mix(in srgb, var(--color-primary) 19%, transparent)',
           }}
         >
           {loading ? "Redirecting..." : "Upgrade to Pro"}

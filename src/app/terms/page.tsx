@@ -7,7 +7,7 @@ export default function TermsPage() {
   const { branding, hero, footer } = config;
 
   return (
-    <div className="min-h-screen bg-[#050510] text-gray-100">
+    <div className="min-h-screen bg-background text-text-primary">
       <Nav
         logoText={branding.logo_text}
         primaryColor={branding.primary_color}
@@ -16,16 +16,16 @@ export default function TermsPage() {
       />
 
       <article className="pt-32 pb-24 px-6 max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 text-center">
           Terms of Service
         </h1>
-        <p className="text-gray-500 text-center mb-16 text-sm">
+        <p className="text-text-muted text-center mb-16 text-sm">
           Last updated: March 1, 2026
         </p>
 
-        <div className="space-y-10 text-gray-400 text-sm leading-relaxed">
+        <div className="space-y-10 text-text-secondary text-sm leading-relaxed">
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">1. Terms</h2>
+            <h2 className="text-xl font-semibold text-text-primary mb-3">1. Terms</h2>
             <p>
               By accessing PlanForge (&ldquo;the Service&rdquo;), you agree to be
               bound by these Terms of Service and all applicable laws and
@@ -37,7 +37,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               2. Use License
             </h2>
             <p>
@@ -46,7 +46,7 @@ export default function TermsPage() {
               of a license, not a transfer of title, and under this license you
               may not:
             </p>
-            <ul className="list-disc list-inside mt-3 space-y-1 text-gray-500">
+            <ul className="list-disc list-inside mt-3 space-y-1 text-text-muted">
               <li>Modify or copy the materials except as enabled by the Service</li>
               <li>
                 Use the materials for any purpose that violates applicable law
@@ -69,7 +69,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               3. Disclaimer
             </h2>
             <p>
@@ -84,7 +84,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               4. Limitations
             </h2>
             <p>
@@ -98,7 +98,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               5. Accuracy of Materials
             </h2>
             <p>
@@ -111,7 +111,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">6. Links</h2>
+            <h2 className="text-xl font-semibold text-text-primary mb-3">6. Links</h2>
             <p>
               PlanForge has not reviewed all of the sites linked to its Service
               and is not responsible for the contents of any such linked site.
@@ -121,7 +121,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">
+            <h2 className="text-xl font-semibold text-text-primary mb-3">
               7. Governing Law
             </h2>
             <p>

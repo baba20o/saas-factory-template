@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Core palette — driven by CSS vars injected from theme.ts */
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-border: var(--color-border);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+
+  /* Derived */
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-glow: var(--color-primary-glow);
+  --color-gradient-from: var(--color-gradient-from);
+  --color-gradient-to: var(--color-gradient-to);
+
+  /* Glass morphism */
+  --color-glass-surface: var(--glass-surface);
+  --color-glass-border: var(--glass-border);
+
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-text-primary);
   font-family: Arial, Helvetica, sans-serif;
 }
 

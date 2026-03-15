@@ -28,7 +28,7 @@ export default function ManageButton() {
     <button
       onClick={handleManage}
       disabled={loading}
-      className="px-5 py-2.5 rounded-xl text-sm font-medium text-white border border-white/10 hover:bg-white/5 transition-all disabled:opacity-50 cursor-pointer"
+      className="px-5 py-2.5 rounded-xl text-sm font-medium text-text-primary border border-glass-border hover:bg-white/5 transition-all disabled:opacity-50 cursor-pointer"
     >
       {loading ? "Opening portal..." : "Manage subscription"}
     </button>

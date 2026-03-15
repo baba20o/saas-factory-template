@@ -82,18 +82,18 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
 
   // Override first gradient with primaryColor
   const gradients = stepGradients.map((g, i) =>
-    i === 0 ? { from: primaryColor, to: stepGradients[0].to } : g
+    i === 0 ? { from: 'var(--color-primary)', to: stepGradients[0].to } : g
   );
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 px-6 overflow-hidden bg-white"
+      className="relative py-28 px-6 overflow-hidden bg-surface-elevated"
     >
       {/* Subtle radial background */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-full opacity-[0.03] blur-3xl pointer-events-none"
-        style={{ backgroundColor: primaryColor }}
+        style={{ backgroundColor: 'var(--color-primary)' }}
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -108,25 +108,25 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium mb-6"
             style={{
-              color: primaryColor,
-              backgroundColor: `${primaryColor}10`,
-              border: `1px solid ${primaryColor}20`,
+              color: 'var(--color-primary)',
+              backgroundColor: 'var(--color-primary-light)',
+              border: '1px solid color-mix(in srgb, var(--color-primary) 12%, transparent)',
             }}
           >
             How It Works
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-5">
             Three steps to your{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: `linear-gradient(135deg, ${primaryColor}, #8b5cf6)`,
+                backgroundImage: `linear-gradient(135deg, var(--color-primary), #8b5cf6)`,
               }}
             >
               perfect plan
             </span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-text-muted max-w-xl mx-auto leading-relaxed">
             Go from rough idea to structured project plan in under a minute.
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
                 y1="2"
                 x2="100%"
                 y2="2"
-                stroke={`${primaryColor}40`}
+                stroke="color-mix(in srgb, var(--color-primary) 25%, transparent)"
                 strokeWidth="2"
                 strokeDasharray="8 6"
                 style={{
@@ -162,7 +162,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
               />
               {/* Animated dot traveling along line */}
               {isVisible && (
-                <circle r="4" fill={primaryColor} opacity="0.6">
+                <circle r="4" fill="var(--color-primary)" opacity="0.6">
                   <animateMotion dur="2s" repeatCount="indefinite" path="M0,2 L9999,2">
                     <mpath href="#" />
                   </animateMotion>
@@ -187,7 +187,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
                 y1="2"
                 x2="100%"
                 y2="2"
-                stroke={`${primaryColor}40`}
+                stroke="color-mix(in srgb, var(--color-primary) 25%, transparent)"
                 strokeWidth="2"
                 strokeDasharray="8 6"
                 style={{
@@ -211,7 +211,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
               <path
                 d="M4 2 L10 7 L4 12"
                 fill="none"
-                stroke={`${primaryColor}60`}
+                stroke="color-mix(in srgb, var(--color-primary) 38%, transparent)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -234,7 +234,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
               <path
                 d="M4 2 L10 7 L4 12"
                 fill="none"
-                stroke={`${primaryColor}60`}
+                stroke="color-mix(in srgb, var(--color-primary) 38%, transparent)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -300,10 +300,10 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
                   </div>
 
                   {/* Text content */}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">
+                  <h3 className="text-xl font-semibold text-text-primary mb-3 tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-gray-500 text-[15px] leading-relaxed max-w-xs mx-auto">
+                  <p className="text-text-muted text-[15px] leading-relaxed max-w-xs mx-auto">
                     {step.description}
                   </p>
                 </div>
@@ -316,7 +316,7 @@ export default function HowItWorks({ primaryColor }: HowItWorksProps) {
             <div
               className="w-full h-full"
               style={{
-                backgroundImage: `repeating-linear-gradient(to bottom, ${primaryColor}30 0px, ${primaryColor}30 8px, transparent 8px, transparent 16px)`,
+                backgroundImage: `repeating-linear-gradient(to bottom, color-mix(in srgb, var(--color-primary) 19%, transparent) 0px, color-mix(in srgb, var(--color-primary) 19%, transparent) 8px, transparent 8px, transparent 16px)`,
                 opacity: isVisible ? 1 : 0,
                 transition: "opacity 1s ease 0.5s",
               }}

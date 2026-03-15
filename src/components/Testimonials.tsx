@@ -121,15 +121,14 @@ export default function Testimonials({ primaryColor }: TestimonialsProps) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <p
-            className="text-sm font-semibold tracking-widest uppercase mb-3"
-            style={{ color: primaryColor }}
+            className="text-sm font-semibold tracking-widest uppercase mb-3 text-primary"
           >
             Testimonials
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary mb-4">
             Loved by teams everywhere
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-text-muted max-w-xl mx-auto">
             See what builders, PMs, and engineering leaders say about PlanForge.
           </p>
         </div>
@@ -165,7 +164,7 @@ export default function Testimonials({ primaryColor }: TestimonialsProps) {
                   "0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)",
               }}
             >
-              <StarRating count={t.stars} color={primaryColor} />
+              <StarRating count={t.stars} color="var(--color-primary)" />
 
               <blockquote className="text-gray-700 leading-relaxed mb-6 text-[15px]">
                 &ldquo;{t.quote}&rdquo;
@@ -178,10 +177,10 @@ export default function Testimonials({ primaryColor }: TestimonialsProps) {
                   {getInitials(t.author)}
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <p className="font-semibold text-text-primary text-sm">
                     {t.author}
                   </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-text-muted">
                     {t.role}
                     {t.company ? `, ${t.company}` : ""}
                   </p>
