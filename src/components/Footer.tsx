@@ -5,6 +5,7 @@ import { useState } from "react";
 interface FooterLink {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 interface FooterLinkGroup {
@@ -16,6 +17,7 @@ interface FooterProps {
   logoText: string;
   company: string;
   primaryColor: string;
+  description?: string;
   links?: FooterLinkGroup[];
 }
 
@@ -27,15 +29,45 @@ const defaultLinks: FooterLinkGroup[] = [
       { label: "Pricing", href: "#pricing" },
       { label: "Integrations", href: "#features" },
       { label: "Changelog", href: "/changelog" },
+      { label: "Roadmap", href: "#", external: true },
+    ],
+  },
+  {
+    title: "Features",
+    links: [
+      { label: "Instant Breakdown", href: "/features/instant-breakdown" },
+      { label: "Smart Timelines", href: "/features/smart-timelines" },
+      { label: "Export Anywhere", href: "/features/export-anywhere" },
+      { label: "Team Sharing", href: "/features/team-sharing" },
+    ],
+  },
+  {
+    title: "Developers",
+    links: [
+      { label: "Documentation", href: "/docs" },
+      { label: "API Reference", href: "/docs#api" },
+      { label: "Quickstart", href: "/docs#quickstart" },
+      { label: "Examples", href: "/docs#examples" },
+      { label: "GitHub", href: "#", external: true },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Blog", href: "/blog" },
+      { label: "Customers", href: "/customers" },
+      { label: "Guides", href: "/blog" },
+      { label: "Support", href: "/contact" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
       { label: "Careers", href: "/about" },
-      { label: "Contact", href: "mailto:support@planforge.dev" },
+      { label: "Brand", href: "/about" },
+      { label: "Partners", href: "/about" },
     ],
   },
   {
@@ -45,6 +77,24 @@ const defaultLinks: FooterLinkGroup[] = [
       { label: "Terms of Service", href: "/terms" },
       { label: "Cookie Policy", href: "/cookie-policy" },
     ],
+  },
+];
+
+const blogPosts = [
+  {
+    title: "Introducing AI-Powered Project Breakdown",
+    date: "Mar 10, 2026",
+    href: "/blog",
+  },
+  {
+    title: "How Teams Ship 2x Faster with Smart Timelines",
+    date: "Feb 28, 2026",
+    href: "/blog",
+  },
+  {
+    title: "The Complete Guide to Milestone Planning",
+    date: "Feb 15, 2026",
+    href: "/blog",
   },
 ];
 
@@ -71,6 +121,11 @@ function SocialIcon({
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
       </svg>
     ),
+    youtube: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+      </svg>
+    ),
   };
   return (
     <a
@@ -94,6 +149,7 @@ export default function Footer({
   logoText,
   company,
   primaryColor,
+  description,
   links,
 }: FooterProps) {
   const [email, setEmail] = useState("");
@@ -109,8 +165,20 @@ export default function Footer({
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="relative bg-gray-900 text-gray-300 overflow-hidden">
+      {/* Gradient top border */}
+      <div
+        className="h-px w-full"
+        style={{
+          background: `linear-gradient(90deg, transparent 0%, ${primaryColor}60 20%, ${primaryColor} 50%, ${primaryColor}60 80%, transparent 100%)`,
+        }}
+      />
+
       {/* Subtle gradient overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -119,20 +187,20 @@ export default function Footer({
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-8">
-        {/* Main grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
-          {/* Brand column */}
-          <div className="md:col-span-4">
+      <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-8">
+        {/* Main grid: Brand (col-span-2) + 6 link columns + Newsletter */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-10 mb-14">
+          {/* Brand column — col-span-2 on large */}
+          <div className="lg:col-span-2">
             <span
               className="text-xl font-bold block mb-3"
               style={{ color: primaryColor }}
             >
               {logoText}
             </span>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6 max-w-xs">
-              AI-powered project planning that turns your ideas into actionable
-              roadmaps in seconds.
+            <p className="text-sm text-gray-400 leading-relaxed mb-6">
+              {description ||
+                "AI-powered project planning that turns your ideas into actionable roadmaps in seconds."}
             </p>
 
             {/* Social icons */}
@@ -140,46 +208,70 @@ export default function Footer({
               <SocialIcon platform="twitter" primaryColor={primaryColor} />
               <SocialIcon platform="github" primaryColor={primaryColor} />
               <SocialIcon platform="linkedin" primaryColor={primaryColor} />
+              <SocialIcon platform="youtube" primaryColor={primaryColor} />
             </div>
           </div>
 
-          {/* Link columns */}
-          {linkGroups.map((group) => (
-            <div key={group.title} className="md:col-span-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">
-                {group.title}
-              </h4>
-              <ul className="space-y-2.5">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Link columns — 6 groups across the middle */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8">
+              {linkGroups.map((group) => (
+                <div key={group.title}>
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
+                    {group.title}
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {group.links.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          {...(link.external
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
+                        >
+                          {link.label}
+                          {link.external && (
+                            <svg
+                              className="w-3 h-3 opacity-40"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                              />
+                            </svg>
+                          )}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
 
-          {/* Newsletter */}
-          <div className="md:col-span-4 lg:col-span-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">
+          {/* Newsletter column */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
               Stay updated
             </h4>
             <p className="text-sm text-gray-500 mb-4">
-              Get product updates and tips. No spam, ever.
+              Get product updates and tips delivered to your inbox. No spam,
+              unsubscribe anytime.
             </p>
-            <form onSubmit={handleSubmit} className="flex gap-2">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"
                 required
-                className="flex-1 px-4 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-sm text-white placeholder-gray-500 outline-none transition-all duration-200 focus:border-transparent"
+                className="w-full px-4 py-2.5 rounded-lg bg-gray-800/60 border border-gray-700/60 text-sm text-white placeholder-gray-500 outline-none transition-all duration-200 focus:border-transparent backdrop-blur-sm"
                 style={{
                   boxShadow: "none",
                 }}
@@ -192,19 +284,47 @@ export default function Footer({
               />
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg cursor-pointer flex-shrink-0"
+                className="w-full px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg cursor-pointer"
                 style={{
                   background: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}dd)`,
                 }}
               >
-                {subscribed ? "Sent!" : "Subscribe"}
+                {subscribed ? "Subscribed!" : "Subscribe"}
               </button>
             </form>
+            <p className="text-xs text-gray-600 mt-3">
+              By subscribing you agree to our{" "}
+              <a href="/privacy" className="underline hover:text-gray-400">
+                Privacy Policy
+              </a>
+              .
+            </p>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        {/* Recent blog posts section */}
+        <div className="border-t border-gray-800/60 pt-8 mb-8">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-5">
+            From the blog
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {blogPosts.map((post) => (
+              <a
+                key={post.title}
+                href={post.href}
+                className="group rounded-lg p-4 transition-all duration-200 hover:bg-white/[0.03] border border-transparent hover:border-gray-800"
+              >
+                <p className="text-sm text-gray-300 group-hover:text-white transition-colors duration-200 mb-1.5 line-clamp-2">
+                  {post.title}
+                </p>
+                <span className="text-xs text-gray-600">{post.date}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-gray-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <span>
             &copy; {new Date().getFullYear()} {company}. All rights reserved.
           </span>
@@ -213,8 +333,27 @@ export default function Footer({
             <span className="text-red-400" aria-label="love">
               &#9829;
             </span>{" "}
-            by GMC Corp
+            by {company}
           </span>
+          <button
+            onClick={scrollToTop}
+            className="group flex items-center gap-1.5 text-gray-500 hover:text-white transition-colors duration-200 cursor-pointer"
+          >
+            Back to top
+            <svg
+              className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 15l7-7 7 7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </footer>

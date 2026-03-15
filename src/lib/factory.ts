@@ -24,6 +24,7 @@ export interface FactoryConfig {
     title: string;
     description: string;
     icon: string;
+    detail?: string;
   }>;
   pricing: Array<{
     name: string;
@@ -38,6 +39,10 @@ export interface FactoryConfig {
     company: string;
     links: Array<{ label: string; href: string }>;
   };
+}
+
+export function slugify(title: string): string {
+  return title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
 let cached: FactoryConfig | null = null;
