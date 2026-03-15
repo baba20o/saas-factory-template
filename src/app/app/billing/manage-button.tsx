@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useToast } from "@/components/toast";
 
 export default function ManageButton() {
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
   async function handleManage() {
@@ -10,9 +12,14 @@ export default function ManageButton() {
     try {
       const res = await fetch("/api/billing/portal", { method: "POST" });
       const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else setLoading(false);
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        toast(data.error || "Could not open billing portal.", "error");
+        setLoading(false);
+      }
     } catch {
+      toast("Network error.", "error");
       setLoading(false);
     }
   }

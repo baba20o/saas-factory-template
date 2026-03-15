@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useToast } from "@/components/toast";
 
 interface ApiKey {
   id: string;
@@ -13,6 +14,7 @@ interface ApiKey {
 }
 
 export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) {
+  const { toast } = useToast();
   const [keys, setKeys] = useState(initialKeys);
   const [newKeyRaw, setNewKeyRaw] = useState<string | null>(null);
   const [keyName, setKeyName] = useState("");
@@ -31,12 +33,14 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
       const data = await res.json();
       if (data.key) {
         setNewKeyRaw(data.key);
-        // Refresh keys list
+        toast("API key created successfully.");
         const listRes = await fetch("/api/keys");
         const listData = await listRes.json();
         if (listData.keys) setKeys(listData.keys);
         setKeyName("");
         setShowCreate(false);
+      } else {
+        toast(data.error || "Failed to create key.", "error");
       }
     } finally {
       setCreating(false);
@@ -51,6 +55,9 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
     });
     if (res.ok) {
       setKeys(keys.map((k) => (k.id === id ? { ...k, revoked_at: new Date().toISOString() } : k)));
+      toast("API key revoked.");
+    } else {
+      toast("Failed to revoke key.", "error");
     }
   }
 
@@ -58,6 +65,7 @@ export default function KeysManager({ initialKeys }: { initialKeys: ApiKey[] }) 
     if (newKeyRaw) {
       navigator.clipboard.writeText(newKeyRaw);
       setCopied(true);
+      toast("Key copied to clipboard.");
       setTimeout(() => setCopied(false), 2000);
     }
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useToast } from "@/components/toast";
 
 export default function AdminActions({
   userId,
@@ -11,12 +12,11 @@ export default function AdminActions({
   isAdmin: boolean;
   plan: string;
 }) {
+  const { toast } = useToast();
   const [loading, setLoading] = useState<string | null>(null);
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   async function handleAction(action: string) {
     setLoading(action);
-    setMessage(null);
     try {
       const res = await fetch("/api/admin/actions", {
         method: "POST",
@@ -25,14 +25,13 @@ export default function AdminActions({
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage({ type: "success", text: data.message || "Action completed." });
-        // Reload after short delay to show updated data
+        toast(data.message || "Action completed.");
         setTimeout(() => window.location.reload(), 1500);
       } else {
-        setMessage({ type: "error", text: data.error || "Action failed." });
+        toast(data.error || "Action failed.", "error");
       }
     } catch {
-      setMessage({ type: "error", text: "Network error." });
+      toast("Network error.", "error");
     } finally {
       setLoading(null);
     }
@@ -41,12 +40,6 @@ export default function AdminActions({
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6">
       <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Admin actions</h2>
-
-      {message && (
-        <p className={`text-sm mb-4 ${message.type === "success" ? "text-green-400" : "text-red-400"}`}>
-          {message.text}
-        </p>
-      )}
 
       <div className="flex flex-wrap gap-3">
         {plan === "free" ? (

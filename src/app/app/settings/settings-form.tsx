@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { useToast } from "@/components/toast";
 
 export default function SettingsForm({
   email,
@@ -10,43 +11,40 @@ export default function SettingsForm({
   email: string;
   displayName: string;
 }) {
+  const { toast } = useToast();
   const [name, setName] = useState(displayName);
-  const [profileMsg, setProfileMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [profileLoading, setProfileLoading] = useState(false);
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordMsg, setPasswordMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [passwordLoading, setPasswordLoading] = useState(false);
 
   async function handleProfileSubmit(e: React.FormEvent) {
     e.preventDefault();
     setProfileLoading(true);
-    setProfileMsg(null);
     const supabase = createClient();
     const { error } = await supabase.auth.updateUser({
       data: { full_name: name },
     });
     setProfileLoading(false);
     if (error) {
-      setProfileMsg({ type: "error", text: error.message });
+      toast(error.message, "error");
     } else {
-      setProfileMsg({ type: "success", text: "Profile updated successfully." });
+      toast("Profile updated successfully.");
     }
   }
 
   async function handlePasswordSubmit(e: React.FormEvent) {
     e.preventDefault();
     setPasswordLoading(true);
-    setPasswordMsg(null);
 
     if (newPassword.length < 8) {
-      setPasswordMsg({ type: "error", text: "Password must be at least 8 characters." });
+      toast("Password must be at least 8 characters.", "error");
       setPasswordLoading(false);
       return;
     }
     if (newPassword !== confirmPassword) {
-      setPasswordMsg({ type: "error", text: "Passwords do not match." });
+      toast("Passwords do not match.", "error");
       setPasswordLoading(false);
       return;
     }
@@ -55,9 +53,9 @@ export default function SettingsForm({
     const { error } = await supabase.auth.updateUser({ password: newPassword });
     setPasswordLoading(false);
     if (error) {
-      setPasswordMsg({ type: "error", text: error.message });
+      toast(error.message, "error");
     } else {
-      setPasswordMsg({ type: "success", text: "Password updated successfully." });
+      toast("Password updated successfully.");
       setNewPassword("");
       setConfirmPassword("");
     }
@@ -91,12 +89,6 @@ export default function SettingsForm({
             className={inputClasses}
           />
         </div>
-
-        {profileMsg && (
-          <p className={`text-sm ${profileMsg.type === "success" ? "text-green-400" : "text-red-400"}`}>
-            {profileMsg.text}
-          </p>
-        )}
 
         <button
           type="submit"
@@ -135,12 +127,6 @@ export default function SettingsForm({
             className={inputClasses}
           />
         </div>
-
-        {passwordMsg && (
-          <p className={`text-sm ${passwordMsg.type === "success" ? "text-green-400" : "text-red-400"}`}>
-            {passwordMsg.text}
-          </p>
-        )}
 
         <button
           type="submit"
